@@ -14,7 +14,12 @@ export function EmbedHeightReporter() {
     const reportHeight = () => {
       window.cancelAnimationFrame(animationFrame);
       animationFrame = window.requestAnimationFrame(() => {
-        const height = Math.ceil(document.documentElement.scrollHeight);
+        const main = document.querySelector("main");
+        const height = Math.ceil(
+          main
+            ? main.getBoundingClientRect().bottom + window.scrollY
+            : document.body.scrollHeight,
+        );
         if (height === lastHeight) return;
         lastHeight = height;
         window.parent.postMessage(

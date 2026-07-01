@@ -122,19 +122,10 @@ export function MyoSetsClient({ trainingDay }: { trainingDay: MyoTrainingDay }) 
           </a>
           <div className="min-w-0">
             <p className="text-[0.65rem] font-black uppercase tracking-[0.15em] text-acid">
-              Тренажёр
+              Тренажер
             </p>
-            <p className="truncate text-base font-black">мио-подходы</p>
+            <p className="truncate text-base font-black">мио-подходов</p>
           </div>
-          <a
-            href="https://terentevfit.ru/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Перейти на сайт Terentev Fit"
-            className="focus-ring ml-auto rounded-2xl"
-          >
-            <TFitLogo className="size-12 shadow-lg transition hover:scale-105" />
-          </a>
         </div>
       </header>
 
@@ -148,7 +139,7 @@ export function MyoSetsClient({ trainingDay }: { trainingDay: MyoTrainingDay }) 
             {trainingDay.title}
           </h1>
           <p className="mt-4 max-w-xl text-base font-semibold leading-relaxed text-black/55">
-            Мио-подходы — это метод, где сначала выполняется активационный подход, затем короткий отдых и серия мини-подходов. Цель — набрать лишние повторения без лишнего объема.
+            Мио-подходы — это метод, где сначала выполняется активационный подход, затем короткий отдых и серия мини-подходов. Цель — набрать качественные повторения без лишнего объема.
           </p>
         </section>
 

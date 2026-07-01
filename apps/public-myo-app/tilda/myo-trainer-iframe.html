@@ -23,7 +23,7 @@
     var contentHeight = Number(event.data.height);
     if (!Number.isFinite(contentHeight) || contentHeight < 320) return;
 
-    frame.style.height = Math.ceil(contentHeight + 28) + "px";
+    frame.style.height = Math.ceil(contentHeight) + "px";
   });
 })();
 </script>
