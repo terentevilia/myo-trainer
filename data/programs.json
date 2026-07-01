@@ -1,0 +1,2264 @@
+{
+  "schemaVersion": 1,
+  "programs": [
+    {
+      "id": "male-2-days",
+      "title": "Мужская программа — 2 дня",
+      "shortTitle": "Мужская · 2 дня",
+      "gender": "male",
+      "daysPerWeek": 2,
+      "sourceFile": "male-2-days.csv",
+      "trainingDays": [
+        {
+          "id": "day-1",
+          "title": "Тренировка 1",
+          "description": null,
+          "defaultRest": "1,5–3 мин",
+          "exercises": [
+            {
+              "id": "day-1-exercise-1",
+              "order": 1,
+              "name": "Жим штанги лежа",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Чест пресс",
+                "дефицитные отжимания"
+              ]
+            },
+            {
+              "id": "day-1-exercise-2",
+              "order": 2,
+              "name": "Тяга верхнего блока обратным хватом",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Подтягивания обратным хватом",
+                "подтягивания нейтральным хватом"
+              ]
+            },
+            {
+              "id": "day-1-exercise-3",
+              "order": 3,
+              "name": "Жим гантелей стоя",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Армейский жим стоя",
+                "жим гантелей сидя"
+              ]
+            },
+            {
+              "id": "day-1-exercise-4",
+              "order": 4,
+              "name": "Приседания со штангой",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Жим ногами+гиперэкстензия",
+                "выпады",
+                "болгарские приседания"
+              ]
+            },
+            {
+              "id": "day-1-exercise-5",
+              "order": 5,
+              "name": "Сгибание голени сидя",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Сгибание голени лежа",
+                "сгибание голени стоя"
+              ]
+            },
+            {
+              "id": "day-1-exercise-6",
+              "order": 6,
+              "name": "Бицепс в тренажере Скотта",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "В Скотте со свободным весом"
+              ]
+            },
+            {
+              "id": "day-1-exercise-7",
+              "order": 7,
+              "name": "Икры на прямых ногах",
+              "isOptional": true,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Икры с гантелью",
+                "любое комофртное упражнение на икры на прямых ногах"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "day-2",
+          "title": "Тренировка 2",
+          "description": null,
+          "defaultRest": "1,5–3 мин",
+          "exercises": [
+            {
+              "id": "day-2-exercise-1",
+              "order": 1,
+              "name": "Жим гантелей на наклонной скамье",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Жим гантелей на прямой скамье",
+                "жим штанги на наклонной скамье"
+              ]
+            },
+            {
+              "id": "day-2-exercise-2",
+              "order": 2,
+              "name": "Тяга Арни",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Мотоциклетная тяга в кроссовере",
+                "диагональная тяга"
+              ]
+            },
+            {
+              "id": "day-2-exercise-3",
+              "order": 3,
+              "name": "Бабочка на плечи",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Отведение руки в наклоне",
+                "разведение рук на наклонной скамье"
+              ]
+            },
+            {
+              "id": "day-2-exercise-4",
+              "order": 4,
+              "name": "Трицепсы из-за головы",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Французский жим с гантелями"
+              ]
+            },
+            {
+              "id": "day-2-exercise-5",
+              "order": 5,
+              "name": "Румынская становая тяга",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Обратные норвежские разгибание",
+                "си-сиприседы"
+              ]
+            },
+            {
+              "id": "day-2-exercise-6",
+              "order": 6,
+              "name": "Разгибание ног в тренажере",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Сиси приседы",
+                "гоблет приседы"
+              ]
+            },
+            {
+              "id": "day-2-exercise-7",
+              "order": 7,
+              "name": "Икры на прямых ногах",
+              "isOptional": true,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Икры с гантелью",
+                "любое комофртное упражнение на икры на прямых ногах"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "male-3-days",
+      "title": "Мужская программа — 3 дня",
+      "shortTitle": "Мужская · 3 дня",
+      "gender": "male",
+      "daysPerWeek": 3,
+      "sourceFile": "male-3-days.csv",
+      "trainingDays": [
+        {
+          "id": "day-1",
+          "title": "Тренировка 1",
+          "description": null,
+          "defaultRest": "1,5–3 мин",
+          "exercises": [
+            {
+              "id": "day-1-exercise-1",
+              "order": 1,
+              "name": "Жим штанги лежа",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Чест пресс",
+                "дефицитные отжимания"
+              ]
+            },
+            {
+              "id": "day-1-exercise-2",
+              "order": 2,
+              "name": "Пуловер в кроссовере",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Пуловер на наклонной скамье"
+              ]
+            },
+            {
+              "id": "day-1-exercise-3",
+              "order": 3,
+              "name": "Жим гантелей стоя",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Армейский жим стоя",
+                "жим гантелей сидя"
+              ]
+            },
+            {
+              "id": "day-1-exercise-4",
+              "order": 4,
+              "name": "Приседания со штангой",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Жим ногами+гиперэкстензия",
+                "выпады",
+                "болгарские приседания"
+              ]
+            },
+            {
+              "id": "day-1-exercise-5",
+              "order": 5,
+              "name": "Сгибание голени сидя",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Сгибание голени лежа",
+                "сгибание голени стоя"
+              ]
+            },
+            {
+              "id": "day-1-exercise-6",
+              "order": 6,
+              "name": "Бицепс в тренажере Скотта",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "В Скотте со свободным весом"
+              ]
+            },
+            {
+              "id": "day-1-exercise-7",
+              "order": 7,
+              "name": "Икры на прямых ногах",
+              "isOptional": true,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Икры с гантелью",
+                "любое комофртное упражнение на икры на прямых ногах"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "day-2",
+          "title": "Тренировка 2",
+          "description": null,
+          "defaultRest": "1,5–3 мин",
+          "exercises": [
+            {
+              "id": "day-2-exercise-1",
+              "order": 1,
+              "name": "Жим гантелей на наклонной скамье",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Жим гантелей на прямой скамье",
+                "жим штанги на наклонной скамье"
+              ]
+            },
+            {
+              "id": "day-2-exercise-2",
+              "order": 2,
+              "name": "Тяга Арни",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Мотоциклетная тяга в кроссовере",
+                "диагональная тяга"
+              ]
+            },
+            {
+              "id": "day-2-exercise-3",
+              "order": 3,
+              "name": "Бабочка на плечи",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Отведение руки в наклоне",
+                "разведение рук на наклонной скамье"
+              ]
+            },
+            {
+              "id": "day-2-exercise-4",
+              "order": 4,
+              "name": "Трицепсы из-за головы",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Французский жим с гантелями"
+              ]
+            },
+            {
+              "id": "day-2-exercise-5",
+              "order": 5,
+              "name": "Румынская становая тяга",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Обратные норвежские разгибание",
+                "си-сиприседы"
+              ]
+            },
+            {
+              "id": "day-2-exercise-6",
+              "order": 6,
+              "name": "Разгибание ног в тренажере",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Сиси приседы",
+                "гоблет приседы"
+              ]
+            },
+            {
+              "id": "day-2-exercise-7",
+              "order": 7,
+              "name": "Икры на прямых ногах",
+              "isOptional": true,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Икры с гантелью",
+                "любое комофртное упражнение на икры на прямых ногах"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "day-3",
+          "title": "Тренировка 3",
+          "description": null,
+          "defaultRest": "1,5–3 мин",
+          "exercises": [
+            {
+              "id": "day-3-exercise-1",
+              "order": 1,
+              "name": "Сведение рук ПэкДэк",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Сведение рук в кроссовере стоя",
+                "разводка с гантелями",
+                "ПэкДэк с согнутыми в локтях руками"
+              ]
+            },
+            {
+              "id": "day-3-exercise-2",
+              "order": 2,
+              "name": "Тяга верхнего блока обратным хватом",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Подтягивания обратным хватом",
+                "подтягивания нейтральным хватом"
+              ]
+            },
+            {
+              "id": "day-3-exercise-3",
+              "order": 3,
+              "name": "Жим ногами",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "10–12",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "10–12",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Приседания в Смите"
+              ]
+            },
+            {
+              "id": "day-3-exercise-4",
+              "order": 4,
+              "name": "Гиперэкстензия",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "только гиперэкстензия"
+              ]
+            },
+            {
+              "id": "day-3-exercise-5",
+              "order": 5,
+              "name": "Отведение руки на скамье",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Отведение в кроссовере",
+                "с гантелью стоя у стены"
+              ]
+            },
+            {
+              "id": "day-3-exercise-6",
+              "order": 6,
+              "name": "Трицепсы из-за головы",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Французский жим с гантелями"
+              ]
+            },
+            {
+              "id": "day-3-exercise-7",
+              "order": 7,
+              "name": "Икры на прямых ногах",
+              "isOptional": true,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Икры с гантелью",
+                "любое комофртное упражнение на икры на прямых ногах"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "female-2-days",
+      "title": "Женская программа — 2 дня",
+      "shortTitle": "Женская · 2 дня",
+      "gender": "female",
+      "daysPerWeek": 2,
+      "sourceFile": "female-2-days.csv",
+      "trainingDays": [
+        {
+          "id": "day-1",
+          "title": "Тренировка 1",
+          "description": null,
+          "defaultRest": "1,5–3 мин",
+          "exercises": [
+            {
+              "id": "day-1-exercise-1",
+              "order": 1,
+              "name": "Отжимания (c колен)",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Отжимания от возвышенности",
+                "классические отжимания",
+                "дефицитные отжимания"
+              ]
+            },
+            {
+              "id": "day-1-exercise-2",
+              "order": 2,
+              "name": "Тяга верхнего блока обратным хватом",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Гравитрон",
+                "подтягивания"
+              ]
+            },
+            {
+              "id": "day-1-exercise-3",
+              "order": 3,
+              "name": "Жим гантелей стоя",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Армейский жим стоя",
+                "жим гантелей сидя"
+              ]
+            },
+            {
+              "id": "day-1-exercise-4",
+              "order": 4,
+              "name": "Приседания со штангой",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Жим ногами+гиперэкстензия",
+                "выпады",
+                "болгарские приседания"
+              ]
+            },
+            {
+              "id": "day-1-exercise-5",
+              "order": 5,
+              "name": "Сгибание голени сидя",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Сгибание голени лежа",
+                "сгибание голени стоя"
+              ]
+            },
+            {
+              "id": "day-1-exercise-6",
+              "order": 6,
+              "name": "Отведение бедра в кроссовере",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Отведение бедра в тренажере",
+                "отведение бедра с эспандером"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "day-2",
+          "title": "Тренировка 2",
+          "description": null,
+          "defaultRest": "1,5–3 мин",
+          "exercises": [
+            {
+              "id": "day-2-exercise-1",
+              "order": 1,
+              "name": "Жим гантелей на наклонной скамье",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Жим гантелей на прямой скамье",
+                "жим штанги на наклонной скамье"
+              ]
+            },
+            {
+              "id": "day-2-exercise-2",
+              "order": 2,
+              "name": "Тяга Арни",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Мотоциклетная тяга в кроссовере",
+                "диагональная тяга"
+              ]
+            },
+            {
+              "id": "day-2-exercise-3",
+              "order": 3,
+              "name": "Бабочка на плечи",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Отведение руки в наклоне",
+                "разведение рук на наклонной скамье"
+              ]
+            },
+            {
+              "id": "day-2-exercise-4",
+              "order": 4,
+              "name": "Румынская становая тяга",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Румынская с гантелями",
+                "любые вариации становой тяги"
+              ]
+            },
+            {
+              "id": "day-2-exercise-5",
+              "order": 5,
+              "name": "Разгибание ног в тренажере",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Обратные норвежские разгибание",
+                "си-сиприседы"
+              ]
+            },
+            {
+              "id": "day-2-exercise-6",
+              "order": 6,
+              "name": "Отведение бедер в тренажере сидя",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Любой тренажер на отведение бедра"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "female-3-days",
+      "title": "Женская программа — 3 дня",
+      "shortTitle": "Женская · 3 дня",
+      "gender": "female",
+      "daysPerWeek": 3,
+      "sourceFile": "female-3-days.csv",
+      "trainingDays": [
+        {
+          "id": "day-1",
+          "title": "Тренировка 1",
+          "description": null,
+          "defaultRest": "1,5–3 мин",
+          "exercises": [
+            {
+              "id": "day-1-exercise-1",
+              "order": 1,
+              "name": "Отжимания (c колен)",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Отжимания от возвышенности",
+                "классические отжимания",
+                "дефицитные отжимания"
+              ]
+            },
+            {
+              "id": "day-1-exercise-2",
+              "order": 2,
+              "name": "Тяга верхнего блока обратным хватом",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Гравитрон",
+                "подтягивания"
+              ]
+            },
+            {
+              "id": "day-1-exercise-3",
+              "order": 3,
+              "name": "Жим гантелей стоя",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Армейский жим стоя",
+                "жим гантелей сидя"
+              ]
+            },
+            {
+              "id": "day-1-exercise-4",
+              "order": 4,
+              "name": "Приседания со штангой",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Жим ногами+гиперэкстензия",
+                "выпады",
+                "болгарские приседания"
+              ]
+            },
+            {
+              "id": "day-1-exercise-5",
+              "order": 5,
+              "name": "Сгибание голени сидя",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Сгибание голени лежа",
+                "сгибание голени стоя"
+              ]
+            },
+            {
+              "id": "day-1-exercise-6",
+              "order": 6,
+              "name": "Отведение бедра в кроссовере",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Отведение бедра в тренажере",
+                "отведение бедра с эспандером"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "day-2",
+          "title": "Тренировка 2",
+          "description": null,
+          "defaultRest": "1,5–3 мин",
+          "exercises": [
+            {
+              "id": "day-2-exercise-1",
+              "order": 1,
+              "name": "Жим гантелей на наклонной скамье",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Жим гантелей на прямой скамье",
+                "жим штанги на наклонной скамье"
+              ]
+            },
+            {
+              "id": "day-2-exercise-2",
+              "order": 2,
+              "name": "Тяга Арни",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Мотоциклетная тяга в кроссовере",
+                "диагональная тяга"
+              ]
+            },
+            {
+              "id": "day-2-exercise-3",
+              "order": 3,
+              "name": "Бабочка на плечи",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Отведение руки в наклоне",
+                "разведение рук на наклонной скамье"
+              ]
+            },
+            {
+              "id": "day-2-exercise-4",
+              "order": 4,
+              "name": "Румынская становая тяга",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Румынская с гантелями",
+                "любые вариации становой тяги"
+              ]
+            },
+            {
+              "id": "day-2-exercise-5",
+              "order": 5,
+              "name": "Разгибание ног в тренажере",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Обратные норвежские разгибание",
+                "си-сиприседы"
+              ]
+            },
+            {
+              "id": "day-2-exercise-6",
+              "order": 6,
+              "name": "Отведение бедер в тренажере сидя",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Любой тренажер на отведение бедра"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "day-3",
+          "title": "Тренировка 3",
+          "description": null,
+          "defaultRest": "1,5–3 мин",
+          "exercises": [
+            {
+              "id": "day-3-exercise-1",
+              "order": 1,
+              "name": "Сведение рук ПэкДэк",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Сведение рук в кроссовере стоя",
+                "разводка с гантелями",
+                "ПэкДэк с согнутыми в локтях руками"
+              ]
+            },
+            {
+              "id": "day-3-exercise-2",
+              "order": 2,
+              "name": "Тяга нижнего блока",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Тяга с поддержкой груди"
+              ]
+            },
+            {
+              "id": "day-3-exercise-3",
+              "order": 3,
+              "name": "Хип трасты",
+              "isOptional": false,
+              "warmupSets": "1–3",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "ягодичный мостик на одной ноге",
+                "хип траст в специальном тренажере"
+              ]
+            },
+            {
+              "id": "day-3-exercise-4",
+              "order": 4,
+              "name": "Гиперэкстензия",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "12–14",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "12–14",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "только гиперэкстензия"
+              ]
+            },
+            {
+              "id": "day-3-exercise-5",
+              "order": 5,
+              "name": "Тяга к подбородку",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Тяга гантелей к подбородку"
+              ]
+            },
+            {
+              "id": "day-3-exercise-6",
+              "order": 6,
+              "name": "Трицепсы из-за головы",
+              "isOptional": false,
+              "warmupSets": "1",
+              "workingSets": [
+                {
+                  "id": "set-1",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-2",
+                  "reps": "14–16",
+                  "rir": null
+                },
+                {
+                  "id": "set-3",
+                  "reps": "14–16",
+                  "rir": null
+                }
+              ],
+              "rest": "1,5–3 мин",
+              "tempo": null,
+              "coachComment": null,
+              "videoUrl": null,
+              "note": null,
+              "alternatives": [
+                "Французский жим с гантелями"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

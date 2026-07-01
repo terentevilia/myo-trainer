@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: #f4f3ee;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 12% 2%, rgba(215, 255, 82, 0.18), transparent 27rem),
+    #f4f3ee;
+  color: #17211b;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+select,
+label[for] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+}
+
+::selection {
+  background: #d7ff52;
+  color: #17211b;
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-2xl px-4 pb-10;
+    padding-top: calc(7.25rem + var(--safe-top));
+  }
+
+  .surface-card {
+    @apply rounded-[1.75rem] border border-black/5 bg-white shadow-card;
+  }
+
+  .focus-ring {
+    @apply outline-none transition focus-visible:ring-4 focus-visible:ring-acid/70;
+  }
+
+  .field {
+    @apply focus-ring min-h-11 w-full rounded-xl border border-black/10 bg-canvas px-3 text-base font-semibold text-ink placeholder:font-normal placeholder:text-black/35;
+  }
+}

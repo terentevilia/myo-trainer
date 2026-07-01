@@ -1,0 +1,30 @@
+{
+  "name": "gym-program-pwa",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "import:data": "node --import tsx scripts/import-programs.ts"
+  },
+  "dependencies": {
+    "lucide-react": "0.468.0",
+    "next": "16.2.9",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.10",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "autoprefixer": "10.4.21",
+    "csv-parse": "5.6.0",
+    "postcss": "8.5.3",
+    "tailwindcss": "3.4.17",
+    "tsx": "4.19.3",
+    "typescript": "5.9.3"
+  }
+}

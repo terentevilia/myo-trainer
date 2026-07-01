@@ -1,0 +1,1743 @@
+<!--
+  TERENTEV FIT — калькулятор генетического потенциала
+  Один автономный блок для Tilda T123 (HTML-код).
+  Внешние библиотеки и серверные запросы не используются.
+-->
+
+<meta charset="UTF-8">
+
+<style>
+  .tf-genetics-calculator {
+    --tf-gc-bg: #0e0f12;
+    --tf-gc-card: #1b1b25;
+    --tf-gc-card-soft: rgba(255, 255, 255, 0.07);
+    --tf-gc-ink: #ffffff;
+    --tf-gc-muted: rgba(255, 255, 255, 0.62);
+    --tf-gc-line: rgba(255, 255, 255, 0.13);
+    --tf-gc-accent: #2c4190;
+    --tf-gc-accent-hover: #3652ad;
+    --tf-gc-danger: #ff8d8d;
+    --tf-gc-radius-lg: 34px;
+    --tf-gc-radius-md: 22px;
+    --tf-gc-font: Arial, "Helvetica Neue", sans-serif;
+
+    width: 100%;
+    color: var(--tf-gc-ink);
+    background: var(--tf-gc-bg);
+    font-family: var(--tf-gc-font);
+    font-size: 16px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .tf-genetics-calculator *,
+  .tf-genetics-calculator *::before,
+  .tf-genetics-calculator *::after {
+    box-sizing: border-box;
+  }
+
+  .tf-genetics-calculator button,
+  .tf-genetics-calculator input {
+    font: inherit;
+  }
+
+  .tf-genetics-calculator button {
+    color: inherit;
+  }
+
+  .tf-genetics-calculator .tf-gc__shell {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 72px 0;
+  }
+
+  .tf-genetics-calculator .tf-gc__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 22px;
+    color: var(--tf-gc-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .tf-genetics-calculator .tf-gc__eyebrow::before {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--tf-gc-accent);
+    content: "";
+    box-shadow: 0 0 0 5px rgba(44, 65, 144, 0.28);
+  }
+
+  .tf-genetics-calculator .tf-gc__title,
+  .tf-genetics-calculator .tf-gc__step-title,
+  .tf-genetics-calculator .tf-gc__result-title {
+    margin: 0;
+    font-weight: 750;
+    letter-spacing: -0.055em;
+    line-height: 0.98;
+  }
+
+  .tf-genetics-calculator .tf-gc__title {
+    max-width: 820px;
+    font-size: clamp(46px, 7vw, 92px);
+  }
+
+  .tf-genetics-calculator .tf-gc__lead {
+    max-width: 660px;
+    margin: 26px 0 0;
+    color: var(--tf-gc-muted);
+    font-size: clamp(17px, 2vw, 21px);
+    line-height: 1.5;
+  }
+
+  .tf-genetics-calculator .tf-gc__start-warning {
+    display: flex;
+    max-width: 660px;
+    margin: 24px 0 0;
+    padding: 16px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(44, 65, 144, 0.24);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .tf-genetics-calculator .tf-gc__start-warning-icon {
+    display: grid;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    place-items: center;
+    background: var(--tf-gc-accent);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .tf-genetics-calculator .tf-gc__start-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(280px, 0.65fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .tf-genetics-calculator .tf-gc__start-main,
+  .tf-genetics-calculator .tf-gc__start-aside,
+  .tf-genetics-calculator .tf-gc__panel,
+  .tf-genetics-calculator .tf-gc__result-hero {
+    border: 1px solid var(--tf-gc-line);
+    border-radius: var(--tf-gc-radius-lg);
+  }
+
+  .tf-genetics-calculator .tf-gc__start-main {
+    min-height: 590px;
+    padding: clamp(30px, 5vw, 62px);
+    background: var(--tf-gc-card);
+  }
+
+  .tf-genetics-calculator .tf-gc__start-main-inner {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 60px;
+  }
+
+  .tf-genetics-calculator .tf-gc__start-aside {
+    display: flex;
+    min-height: 590px;
+    padding: 34px;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--tf-gc-accent);
+    color: #ffffff;
+  }
+
+  .tf-genetics-calculator .tf-gc__aside-mark {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    place-items: center;
+    background: #ffffff;
+    color: var(--tf-gc-accent);
+    font-size: 23px;
+    font-weight: 800;
+  }
+
+  .tf-genetics-calculator .tf-gc__facts {
+    display: grid;
+    gap: 0;
+  }
+
+  .tf-genetics-calculator .tf-gc__fact {
+    padding: 22px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .tf-genetics-calculator .tf-gc__fact-value {
+    display: block;
+    margin-bottom: 4px;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 750;
+    letter-spacing: -0.035em;
+  }
+
+  .tf-genetics-calculator .tf-gc__fact-label {
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 13px;
+  }
+
+  .tf-genetics-calculator .tf-gc__btn {
+    display: inline-flex;
+    min-height: 58px;
+    padding: 0 24px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 750;
+    line-height: 1.1;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .tf-genetics-calculator .tf-gc__btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .tf-genetics-calculator .tf-gc__btn:active {
+    transform: translateY(0);
+  }
+
+  .tf-genetics-calculator .tf-gc__btn:focus-visible,
+  .tf-genetics-calculator .tf-gc__choice:focus-within,
+  .tf-genetics-calculator .tf-gc__input:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.42);
+    outline-offset: 3px;
+  }
+
+  .tf-genetics-calculator .tf-gc__btn--primary {
+    background: var(--tf-gc-accent);
+    color: #ffffff;
+  }
+
+  .tf-genetics-calculator .tf-gc__btn--primary:hover {
+    background: var(--tf-gc-accent-hover);
+  }
+
+  .tf-genetics-calculator .tf-gc__btn--accent {
+    background: var(--tf-gc-accent);
+    color: #ffffff;
+  }
+
+  .tf-genetics-calculator .tf-gc__btn--accent:hover {
+    background: var(--tf-gc-accent-hover);
+  }
+
+  .tf-genetics-calculator .tf-gc__btn--ghost {
+    border-color: var(--tf-gc-line);
+    background: transparent;
+  }
+
+  .tf-genetics-calculator .tf-gc__btn-icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .tf-genetics-calculator .tf-gc__screen {
+    animation: tfGcFadeIn 320ms ease both;
+  }
+
+  .tf-genetics-calculator .tf-gc__panel {
+    overflow: hidden;
+    background: var(--tf-gc-card);
+  }
+
+  .tf-genetics-calculator .tf-gc__progress-wrap {
+    padding: 24px clamp(24px, 5vw, 54px) 0;
+  }
+
+  .tf-genetics-calculator .tf-gc__progress-meta {
+    display: flex;
+    margin-bottom: 13px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    color: var(--tf-gc-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .tf-genetics-calculator .tf-gc__progress {
+    height: 7px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--tf-gc-card-soft);
+  }
+
+  .tf-genetics-calculator .tf-gc__progress-value {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--tf-gc-accent);
+    transition: width 280ms ease;
+  }
+
+  .tf-genetics-calculator .tf-gc__step {
+    padding: clamp(38px, 6vw, 72px) clamp(24px, 7vw, 82px) 48px;
+  }
+
+  .tf-genetics-calculator .tf-gc__step-head {
+    max-width: 760px;
+    margin-bottom: 42px;
+  }
+
+  .tf-genetics-calculator .tf-gc__step-title {
+    font-size: clamp(36px, 5vw, 62px);
+  }
+
+  .tf-genetics-calculator .tf-gc__step-copy {
+    max-width: 640px;
+    margin: 18px 0 0;
+    color: var(--tf-gc-muted);
+    font-size: 17px;
+  }
+
+  .tf-genetics-calculator .tf-gc__fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .tf-genetics-calculator .tf-gc__field {
+    min-width: 0;
+  }
+
+  .tf-genetics-calculator .tf-gc__field--full {
+    grid-column: 1 / -1;
+  }
+
+  .tf-genetics-calculator .tf-gc__label {
+    display: flex;
+    margin-bottom: 9px;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .tf-genetics-calculator .tf-gc__label-unit {
+    color: var(--tf-gc-muted);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .tf-genetics-calculator .tf-gc__input-wrap {
+    position: relative;
+  }
+
+  .tf-genetics-calculator .tf-gc__input {
+    width: 100%;
+    height: 68px;
+    padding: 0 58px 0 20px;
+    border: 1px solid var(--tf-gc-line);
+    border-radius: 17px;
+    outline: none;
+    background: var(--tf-gc-bg);
+    color: var(--tf-gc-ink);
+    font-size: 21px;
+    font-weight: 700;
+    transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .tf-genetics-calculator .tf-gc__input::placeholder {
+    color: rgba(255, 255, 255, 0.34);
+    font-weight: 500;
+  }
+
+  .tf-genetics-calculator .tf-gc__input:focus {
+    border-color: rgba(255, 255, 255, 0.48);
+    background: var(--tf-gc-bg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+  }
+
+  .tf-genetics-calculator .tf-gc__input[aria-invalid="true"] {
+    border-color: var(--tf-gc-danger);
+    background: rgba(255, 141, 141, 0.07);
+  }
+
+  .tf-genetics-calculator .tf-gc__unit {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    color: var(--tf-gc-muted);
+    font-size: 13px;
+    font-weight: 700;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .tf-genetics-calculator .tf-gc__hint,
+  .tf-genetics-calculator .tf-gc__error {
+    margin: 9px 3px 0;
+    line-height: 1.5;
+  }
+
+  .tf-genetics-calculator .tf-gc__hint {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .tf-genetics-calculator .tf-gc__error {
+    min-height: 17px;
+    color: var(--tf-gc-danger);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .tf-genetics-calculator .tf-gc__choices {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .tf-genetics-calculator .tf-gc__choice {
+    position: relative;
+    display: flex;
+    min-height: 122px;
+    padding: 24px;
+    border: 1px solid var(--tf-gc-line);
+    border-radius: var(--tf-gc-radius-md);
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    background: var(--tf-gc-bg);
+    cursor: pointer;
+    transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .tf-genetics-calculator .tf-gc__choice:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.38);
+  }
+
+  .tf-genetics-calculator .tf-gc__choice:has(input:checked) {
+    border-color: rgba(255, 255, 255, 0.46);
+    background: var(--tf-gc-accent);
+  }
+
+  .tf-genetics-calculator .tf-gc__choice input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  .tf-genetics-calculator .tf-gc__choice-title {
+    display: block;
+    font-size: 22px;
+    font-weight: 750;
+    letter-spacing: -0.03em;
+  }
+
+  .tf-genetics-calculator .tf-gc__choice-copy {
+    display: block;
+    margin-top: 5px;
+    color: var(--tf-gc-muted);
+    font-size: 13px;
+  }
+
+  .tf-genetics-calculator .tf-gc__choice:has(input:checked) .tf-gc__choice-copy {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .tf-genetics-calculator .tf-gc__choice-check {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 auto;
+    border: 1px solid var(--tf-gc-line);
+    border-radius: 50%;
+    place-items: center;
+    background: #fff;
+  }
+
+  .tf-genetics-calculator .tf-gc__choice:has(input:checked) .tf-gc__choice-check::after {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--tf-gc-accent);
+    content: "";
+  }
+
+  .tf-genetics-calculator .tf-gc__nav {
+    display: flex;
+    margin-top: 42px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .tf-genetics-calculator .tf-gc__nav-spacer {
+    flex: 1;
+  }
+
+  .tf-genetics-calculator .tf-gc__result-head {
+    display: flex;
+    margin-bottom: 24px;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .tf-genetics-calculator .tf-gc__result-title {
+    max-width: 760px;
+    font-size: clamp(42px, 6vw, 78px);
+  }
+
+  .tf-genetics-calculator .tf-gc__result-hero {
+    display: grid;
+    grid-template-columns: minmax(230px, 0.75fr) minmax(0, 1.25fr);
+    overflow: hidden;
+    background: var(--tf-gc-card);
+    color: #fff;
+  }
+
+  .tf-genetics-calculator .tf-gc__score {
+    display: flex;
+    min-height: 330px;
+    padding: clamp(30px, 5vw, 52px);
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--tf-gc-accent);
+    color: var(--tf-gc-ink);
+  }
+
+  .tf-genetics-calculator .tf-gc__score-label {
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .tf-genetics-calculator .tf-gc__score-value {
+    display: block;
+    font-size: clamp(78px, 11vw, 138px);
+    font-weight: 800;
+    letter-spacing: -0.075em;
+    line-height: 0.8;
+  }
+
+  .tf-genetics-calculator .tf-gc__score-note {
+    max-width: 220px;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .tf-genetics-calculator .tf-gc__benchmark {
+    display: flex;
+    min-height: 330px;
+    padding: clamp(30px, 5vw, 52px);
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 42px;
+  }
+
+  .tf-genetics-calculator .tf-gc__benchmark-kicker {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .tf-genetics-calculator .tf-gc__benchmark-title {
+    max-width: 590px;
+    margin: 14px 0 0;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 730;
+    letter-spacing: -0.045em;
+    line-height: 1.05;
+  }
+
+  .tf-genetics-calculator .tf-gc__benchmark-copy {
+    max-width: 580px;
+    margin: 14px 0 0;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 14px;
+  }
+
+  .tf-genetics-calculator .tf-gc__metrics {
+    display: grid;
+    margin-top: 24px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .tf-genetics-calculator .tf-gc__metric {
+    min-height: 172px;
+    padding: 24px;
+    border: 1px solid var(--tf-gc-line);
+    border-radius: var(--tf-gc-radius-md);
+    background: var(--tf-gc-card);
+  }
+
+  .tf-genetics-calculator .tf-gc__metric-label {
+    display: block;
+    min-height: 38px;
+    color: var(--tf-gc-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .tf-genetics-calculator .tf-gc__metric-value {
+    display: block;
+    margin-top: 21px;
+    font-size: clamp(29px, 3.2vw, 44px);
+    font-weight: 780;
+    letter-spacing: -0.055em;
+    line-height: 1;
+  }
+
+  .tf-genetics-calculator .tf-gc__metric-unit {
+    color: var(--tf-gc-muted);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .tf-genetics-calculator .tf-gc__ffmi-table {
+    overflow: hidden;
+    border: 1px solid var(--tf-gc-line);
+    border-radius: var(--tf-gc-radius-md);
+    background: var(--tf-gc-card);
+  }
+
+  .tf-genetics-calculator .tf-gc__ffmi-head,
+  .tf-genetics-calculator .tf-gc__ffmi-row {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+  }
+
+  .tf-genetics-calculator .tf-gc__ffmi-head {
+    min-height: 66px;
+    padding: 16px 26px;
+    color: var(--tf-gc-muted);
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .tf-genetics-calculator .tf-gc__ffmi-row {
+    min-height: 76px;
+    padding: 17px 26px;
+    border-top: 1px solid var(--tf-gc-line);
+  }
+
+  .tf-genetics-calculator .tf-gc__ffmi-row--current {
+    background: var(--tf-gc-accent);
+    color: #ffffff;
+  }
+
+  .tf-genetics-calculator .tf-gc__ffmi-value {
+    font-size: 23px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+  }
+
+  .tf-genetics-calculator .tf-gc__ffmi-description {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .tf-genetics-calculator .tf-gc__ffmi-row--current .tf-gc__ffmi-description::after {
+    display: inline-block;
+    margin-left: 8px;
+    color: rgba(255, 255, 255, 0.68);
+    content: "← ты здесь";
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .tf-genetics-calculator .tf-gc__section {
+    margin-top: 64px;
+  }
+
+  .tf-genetics-calculator .tf-gc__section-head {
+    display: flex;
+    margin-bottom: 22px;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  .tf-genetics-calculator .tf-gc__section-title {
+    margin: 0;
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 750;
+    letter-spacing: -0.045em;
+    line-height: 1.05;
+  }
+
+  .tf-genetics-calculator .tf-gc__section-copy {
+    max-width: 470px;
+    margin: 0;
+    color: var(--tf-gc-muted);
+    font-size: 13px;
+  }
+
+  .tf-genetics-calculator .tf-gc__parts {
+    overflow: hidden;
+    border: 1px solid var(--tf-gc-line);
+    border-radius: var(--tf-gc-radius-md);
+    background: var(--tf-gc-card);
+  }
+
+  .tf-genetics-calculator .tf-gc__parts-head,
+  .tf-genetics-calculator .tf-gc__part {
+    display: grid;
+    grid-template-columns: minmax(145px, 1.25fr) repeat(4, minmax(90px, 0.7fr));
+    gap: 16px;
+    align-items: center;
+  }
+
+  .tf-genetics-calculator .tf-gc__parts-head {
+    padding: 15px 24px;
+    color: var(--tf-gc-muted);
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .tf-genetics-calculator .tf-gc__part {
+    min-height: 78px;
+    padding: 16px 24px;
+    border-top: 1px solid var(--tf-gc-line);
+  }
+
+  .tf-genetics-calculator .tf-gc__part-name {
+    font-weight: 750;
+  }
+
+  .tf-genetics-calculator .tf-gc__part-number {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+  }
+
+  .tf-genetics-calculator .tf-gc__pill {
+    display: inline-flex;
+    width: max-content;
+    max-width: 100%;
+    min-height: 32px;
+    padding: 6px 11px;
+    border-radius: 999px;
+    align-items: center;
+    background: var(--tf-gc-card-soft);
+    font-size: 12px;
+    font-weight: 750;
+  }
+
+  .tf-genetics-calculator .tf-gc__pill--accent {
+    background: var(--tf-gc-accent);
+  }
+
+  .tf-genetics-calculator .tf-gc__notice {
+    padding: 28px;
+    border: 1px solid var(--tf-gc-line);
+    border-radius: var(--tf-gc-radius-md);
+    background: var(--tf-gc-card);
+  }
+
+  .tf-genetics-calculator .tf-gc__notice-title {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 750;
+    letter-spacing: -0.025em;
+  }
+
+  .tf-genetics-calculator .tf-gc__notice-copy {
+    margin: 0;
+    color: var(--tf-gc-muted);
+    font-size: 14px;
+  }
+
+  .tf-genetics-calculator .tf-gc__result-actions {
+    display: flex;
+    margin-top: 38px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .tf-genetics-calculator .tf-gc__disclaimer {
+    max-width: 790px;
+    margin: 28px 0 0;
+    color: var(--tf-gc-muted);
+    font-size: 11px;
+  }
+
+  @keyframes tfGcFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(9px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .tf-genetics-calculator .tf-gc__shell {
+      padding: 52px 0;
+    }
+
+    .tf-genetics-calculator .tf-gc__start-layout,
+    .tf-genetics-calculator .tf-gc__result-hero {
+      grid-template-columns: 1fr;
+    }
+
+    .tf-genetics-calculator .tf-gc__start-main,
+    .tf-genetics-calculator .tf-gc__start-aside {
+      min-height: auto;
+    }
+
+    .tf-genetics-calculator .tf-gc__start-aside {
+      gap: 70px;
+    }
+
+    .tf-genetics-calculator .tf-gc__facts {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .tf-genetics-calculator .tf-gc__fact {
+      padding-bottom: 0;
+    }
+
+    .tf-genetics-calculator .tf-gc__metrics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .tf-genetics-calculator .tf-gc__score,
+    .tf-genetics-calculator .tf-gc__benchmark {
+      min-height: 280px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .tf-genetics-calculator {
+      --tf-gc-radius-lg: 25px;
+      --tf-gc-radius-md: 18px;
+    }
+
+    .tf-genetics-calculator .tf-gc__shell {
+      width: min(100% - 24px, 1120px);
+      padding: 28px 0;
+    }
+
+    .tf-genetics-calculator .tf-gc__start-main,
+    .tf-genetics-calculator .tf-gc__start-aside {
+      padding: 24px;
+    }
+
+    .tf-genetics-calculator .tf-gc__start-main-inner {
+      gap: 44px;
+    }
+
+    .tf-genetics-calculator .tf-gc__title {
+      font-size: clamp(40px, 13vw, 58px);
+    }
+
+    .tf-genetics-calculator .tf-gc__lead {
+      font-size: 16px;
+    }
+
+    .tf-genetics-calculator .tf-gc__start-warning {
+      padding: 14px;
+      font-size: 13px;
+    }
+
+    .tf-genetics-calculator .tf-gc__facts {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .tf-genetics-calculator .tf-gc__start-aside {
+      gap: 42px;
+    }
+
+    .tf-genetics-calculator .tf-gc__step {
+      padding: 34px 18px 24px;
+    }
+
+    .tf-genetics-calculator .tf-gc__progress-wrap {
+      padding: 20px 18px 0;
+    }
+
+    .tf-genetics-calculator .tf-gc__step-head {
+      margin-bottom: 30px;
+    }
+
+    .tf-genetics-calculator .tf-gc__step-title {
+      font-size: 38px;
+    }
+
+    .tf-genetics-calculator .tf-gc__step-copy {
+      font-size: 15px;
+    }
+
+    .tf-genetics-calculator .tf-gc__fields,
+    .tf-genetics-calculator .tf-gc__choices,
+    .tf-genetics-calculator .tf-gc__metrics {
+      grid-template-columns: 1fr;
+    }
+
+    .tf-genetics-calculator .tf-gc__choice {
+      min-height: 102px;
+      padding: 20px;
+    }
+
+    .tf-genetics-calculator .tf-gc__input {
+      height: 62px;
+      font-size: 19px;
+    }
+
+    .tf-genetics-calculator .tf-gc__nav {
+      align-items: stretch;
+    }
+
+    .tf-genetics-calculator .tf-gc__nav .tf-gc__btn {
+      min-width: 0;
+      flex: 1;
+      padding-inline: 16px;
+    }
+
+    .tf-genetics-calculator .tf-gc__result-head,
+    .tf-genetics-calculator .tf-gc__section-head {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .tf-genetics-calculator .tf-gc__result-title {
+      font-size: 43px;
+    }
+
+    .tf-genetics-calculator .tf-gc__score,
+    .tf-genetics-calculator .tf-gc__benchmark {
+      min-height: 250px;
+      padding: 28px;
+    }
+
+    .tf-genetics-calculator .tf-gc__score-value {
+      font-size: 92px;
+    }
+
+    .tf-genetics-calculator .tf-gc__metric {
+      min-height: 142px;
+    }
+
+    .tf-genetics-calculator .tf-gc__ffmi-head,
+    .tf-genetics-calculator .tf-gc__ffmi-row {
+      grid-template-columns: 74px minmax(0, 1fr);
+      gap: 11px;
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+
+    .tf-genetics-calculator .tf-gc__ffmi-head {
+      min-height: 58px;
+    }
+
+    .tf-genetics-calculator .tf-gc__ffmi-row {
+      min-height: 70px;
+    }
+
+    .tf-genetics-calculator .tf-gc__ffmi-value {
+      font-size: 20px;
+    }
+
+    .tf-genetics-calculator .tf-gc__ffmi-description {
+      font-size: 13px;
+    }
+
+    .tf-genetics-calculator .tf-gc__ffmi-row--current .tf-gc__ffmi-description::after {
+      display: block;
+      margin: 3px 0 0;
+    }
+
+    .tf-genetics-calculator .tf-gc__section {
+      margin-top: 46px;
+    }
+
+    .tf-genetics-calculator .tf-gc__parts-head {
+      display: none;
+    }
+
+    .tf-genetics-calculator .tf-gc__part {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 16px;
+      padding: 20px;
+    }
+
+    .tf-genetics-calculator .tf-gc__part-name {
+      grid-column: 1 / -1;
+      font-size: 18px;
+    }
+
+    .tf-genetics-calculator .tf-gc__part-cell::before {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--tf-gc-muted);
+      content: attr(data-label);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .tf-genetics-calculator .tf-gc__part-cell--relative {
+      grid-column: auto;
+    }
+
+    .tf-genetics-calculator .tf-gc__result-actions {
+      flex-direction: column;
+    }
+
+    .tf-genetics-calculator .tf-gc__result-actions .tf-gc__btn {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tf-genetics-calculator *,
+    .tf-genetics-calculator *::before,
+    .tf-genetics-calculator *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+
+<section class="tf-genetics-calculator" id="tf-genetics-calculator" aria-label="Калькулятор генетического потенциала">
+  <div class="tf-gc__shell">
+    <div class="tf-gc__app" aria-live="polite"></div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    "use strict";
+
+    var script = document.currentScript;
+    var root = script && script.previousElementSibling;
+
+    if (!root || !root.classList.contains("tf-genetics-calculator")) {
+      root = document.getElementById("tf-genetics-calculator");
+    }
+
+    if (!root || root.getAttribute("data-tf-gc-ready") === "true") return;
+    root.setAttribute("data-tf-gc-ready", "true");
+
+    var app = root.querySelector(".tf-gc__app");
+    if (!app) return;
+
+    /*
+      ОСНОВНЫЕ НАСТРОЙКИ.
+      Здесь можно менять тексты, поля, ссылки, ограничения и пояснения.
+      Цвета находятся в CSS-переменных в начале блока .tf-genetics-calculator.
+    */
+    var CONFIG = {
+      texts: {
+        eyebrow: "Terentev Fit · расчёт по антропометрии",
+        title: "Узнай свой натуральный мышечный потенциал",
+        intro: "Калькулятор сопоставит рост, состав тела и окружности суставов с моделью, основанной на работах Кейси Бата. Результат — ориентир для планирования, а не медицинский диагноз.",
+        introWarning: "Если вы не знаете свой актуальный процент подкожного жира, укажите примерное значение.",
+        startButton: "Начать расчёт",
+        backButton: "Назад",
+        nextButton: "Далее",
+        calculateButton: "Показать результат",
+        restartButton: "Пройти заново",
+        resultEyebrow: "Персональный расчёт",
+        resultTitle: "Твой ориентир мышечного потенциала",
+        requiredError: "Заполни это поле.",
+        numberError: "Введи корректное число.",
+        choiceError: "Выбери один из вариантов.",
+        disclaimer: "Расчёт основан на антропометрической модели и зависит от точности замеров. Он не оценивает состояние здоровья и не заменяет консультацию врача или специалиста по тренировкам."
+      },
+      links: {
+        /* Оставь пустую строку, чтобы CTA не выводилась. */
+        ctaUrl: "",
+        ctaLabel: "Получить персональные рекомендации"
+      },
+      facts: [
+        { value: "3–5 минут", label: "на прохождение" },
+        { value: "12 замеров", label: "максимум для мужчины" },
+        { value: "Без регистрации", label: "данные никуда не отправляются" }
+      ],
+      steps: [
+        {
+          id: "sex",
+          title: "Сначала — пол",
+          description: "Таблица использует разные коэффициенты максимальной сухой массы для мужчин и женщин.",
+          fields: [
+            {
+              id: "sex",
+              type: "radio",
+              required: true,
+              options: [
+                { value: "male", label: "Мужчина", description: "Покажем массу, FFMI и потенциал обхватов" },
+                { value: "female", label: "Женщина", description: "Покажем массу и нормализованный FFMI" }
+              ]
+            }
+          ]
+        },
+        {
+          id: "body",
+          title: "Основные параметры",
+          description: "Используй актуальные значения. Процент жира может быть приблизительным.",
+          fields: [
+            { id: "height", label: "Рост", type: "number", unit: "см", placeholder: "180", min: 100, max: 250, step: 0.1, required: true },
+            { id: "weight", label: "Вес", type: "number", unit: "кг", placeholder: "82", min: 30, max: 350, step: 0.1, required: true },
+            { id: "bodyFat", label: "Текущий процент жира", type: "number", unit: "%", placeholder: "17", min: 2, max: 70, step: 0.1, required: true, hint: "Допускается приблизительная оценка." },
+            { id: "targetBodyFat", label: "Желаемый процент жира", type: "number", unit: "%", placeholder: "14", min: 2, max: 60, step: 0.1, required: true }
+          ]
+        },
+        {
+          id: "frame",
+          title: "Размер костного каркаса",
+          description: "Измеряй сантиметровой лентой без сильного натяжения. Эти параметры влияют на расчёт максимальной сухой массы.",
+          fields: [
+            { id: "wrist", label: "Окружность кисти", type: "number", unit: "см", placeholder: "17", min: 5, max: 50, step: 0.1, required: true, hint: "Измеряется чуть ниже кисти, выше выступающей кости на внешней стороне кисти (в сторону локтя)." },
+            { id: "ankle", label: "Окружность лодыжки", type: "number", unit: "см", placeholder: "23", min: 5, max: 60, step: 0.1, required: true, hint: "Измеряется примерно на 2,5 см выше костных выступов на внешней стороне голени, в самом узком месте голени." }
+          ]
+        },
+        {
+          id: "circumferences",
+          title: "Текущие обхваты",
+          description: "В исходной таблице расчёт максимальных обхватов помечен как мужской. Все значения вводятся в сантиметрах.",
+          when: function (answers) { return answers.sex !== "female"; },
+          fields: [
+            { id: "chest", label: "Грудь", type: "number", unit: "см", placeholder: "108", min: 10, max: 250, step: 0.1, required: true, hint: "Измеряется подмышками при расслабленном состоянии и расслабленных руках по бокам." },
+            { id: "biceps", label: "Бицепс", type: "number", unit: "см", placeholder: "40", min: 10, max: 120, step: 0.1, required: true, hint: "Измеряется при согнутом предплечье на 90° в самом широком месте, без напряжения бицепса." },
+            { id: "forearm", label: "Предплечье", type: "number", unit: "см", placeholder: "33", min: 10, max: 100, step: 0.1, required: true, hint: "Измеряется в самой широкой точке при сжатых кулаках, руки вытянуты вперёд." },
+            { id: "neck", label: "Шея", type: "number", unit: "см", placeholder: "40", min: 10, max: 100, step: 0.1, required: true, hint: "Измеряется ниже кадыка в самом узком месте." },
+            { id: "thigh", label: "Одно бедро", type: "number", unit: "см", placeholder: "62", min: 10, max: 150, step: 0.1, required: true, hint: "Измеряется в положении стоя в расслабленном состоянии с лентой на середине бедра." },
+            { id: "calf", label: "Икроножная мышца", type: "number", unit: "см", placeholder: "43", min: 10, max: 120, step: 0.1, required: true, hint: "Измеряется в положении стоя в расслабленном состоянии в самой большой точке." }
+          ]
+        }
+      ],
+      result: {
+        ffmiBenchmarks: [
+          { min: 28.0, label: "Самый большой натуральный атлет, когда-либо научно зафиксированный" },
+          { min: 25.4, label: "Натуральный профессиональный бодибилдер мирового класса" },
+          { min: 24.9, label: "Верхний предел генетики большинства людей" },
+          { min: 24.8, label: "Средний пользователь стероидов" },
+          { min: 22.6, label: "Соревнующийся бодибилдер международного уровня" },
+          { min: 21.8, label: "Соревнующийся силовой атлет любительского уровня" },
+          { min: 18.9, label: "Средний европеец" },
+          { min: -Infinity, label: "Ниже ориентира среднего европейца из таблицы" }
+        ],
+        achievedExplanations: [
+          { max: 0.60, text: "По модели остаётся значительный запас до расчётного ориентира." },
+          { max: 0.80, text: "По модели у тебя ещё есть заметный запас для набора сухой массы." },
+          { max: 0.95, text: "Ты уже близко к расчётному натуральному ориентиру." },
+          { max: 1.05, text: "Текущая сухая масса находится вблизи расчётного ориентира модели." },
+          { max: Infinity, text: "Текущая сухая масса выше расчётного ориентира. Проверь точность процента жира и замеров." }
+        ]
+      }
+    };
+
+    var state = {
+      screen: "start",
+      stepIndex: 0,
+      answers: {}
+    };
+
+    function escapeHtml(value) {
+      return String(value == null ? "" : value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function parseNumber(value) {
+      return Number(String(value).trim().replace(",", "."));
+    }
+
+    function formatNumber(value, digits) {
+      if (!Number.isFinite(value)) return "—";
+      return value.toLocaleString("ru-RU", {
+        minimumFractionDigits: digits,
+        maximumFractionDigits: digits
+      });
+    }
+
+    function formatPercent(value, digits) {
+      return formatNumber(value * 100, digits) + "%";
+    }
+
+    function getActiveSteps() {
+      return CONFIG.steps.filter(function (step) {
+        return typeof step.when !== "function" || step.when(state.answers);
+      });
+    }
+
+    function getFieldById(fieldId) {
+      var allFields = [];
+      CONFIG.steps.forEach(function (step) {
+        allFields = allFields.concat(step.fields || []);
+      });
+      return allFields.find(function (field) { return field.id === fieldId; });
+    }
+
+    function renderStart() {
+      var factsHtml = CONFIG.facts.map(function (fact) {
+        return '<div class="tf-gc__fact">' +
+          '<span class="tf-gc__fact-value">' + escapeHtml(fact.value) + '</span>' +
+          '<span class="tf-gc__fact-label">' + escapeHtml(fact.label) + '</span>' +
+        '</div>';
+      }).join("");
+
+      app.innerHTML =
+        '<div class="tf-gc__screen tf-gc__start-layout">' +
+          '<div class="tf-gc__start-main">' +
+            '<div class="tf-gc__start-main-inner">' +
+              '<div>' +
+                '<p class="tf-gc__eyebrow">' + escapeHtml(CONFIG.texts.eyebrow) + '</p>' +
+                '<h2 class="tf-gc__title">' + escapeHtml(CONFIG.texts.title) + '</h2>' +
+                '<p class="tf-gc__lead">' + escapeHtml(CONFIG.texts.intro) + '</p>' +
+                '<div class="tf-gc__start-warning">' +
+                  '<span class="tf-gc__start-warning-icon" aria-hidden="true">!</span>' +
+                  '<span>' + escapeHtml(CONFIG.texts.introWarning) + '</span>' +
+                '</div>' +
+              '</div>' +
+              '<div>' +
+                '<button class="tf-gc__btn tf-gc__btn--primary" type="button" data-action="start">' +
+                  '<span>' + escapeHtml(CONFIG.texts.startButton) + '</span>' +
+                  '<span class="tf-gc__btn-icon" aria-hidden="true">↗</span>' +
+                '</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<aside class="tf-gc__start-aside" aria-label="О калькуляторе">' +
+            '<div class="tf-gc__aside-mark" aria-hidden="true">T</div>' +
+            '<div class="tf-gc__facts">' + factsHtml + '</div>' +
+          '</aside>' +
+        '</div>';
+    }
+
+    function renderRadioField(field) {
+      var selected = state.answers[field.id];
+      var optionsHtml = field.options.map(function (option) {
+        var checked = selected === option.value ? " checked" : "";
+        return '<label class="tf-gc__choice">' +
+          '<input type="radio" name="' + escapeHtml(field.id) + '" value="' + escapeHtml(option.value) + '"' + checked + '>' +
+          '<span>' +
+            '<span class="tf-gc__choice-title">' + escapeHtml(option.label) + '</span>' +
+            '<span class="tf-gc__choice-copy">' + escapeHtml(option.description || "") + '</span>' +
+          '</span>' +
+          '<span class="tf-gc__choice-check" aria-hidden="true"></span>' +
+        '</label>';
+      }).join("");
+
+      return '<div class="tf-gc__field tf-gc__field--full" data-field="' + escapeHtml(field.id) + '">' +
+        '<div class="tf-gc__choices">' + optionsHtml + '</div>' +
+        '<p class="tf-gc__error" data-error-for="' + escapeHtml(field.id) + '" aria-live="polite"></p>' +
+      '</div>';
+    }
+
+    function renderNumberField(field) {
+      var value = state.answers[field.id] == null ? "" : state.answers[field.id];
+      var hint = field.hint ? '<p class="tf-gc__hint">' + escapeHtml(field.hint) + '</p>' : "";
+
+      return '<div class="tf-gc__field" data-field="' + escapeHtml(field.id) + '">' +
+        '<label class="tf-gc__label" for="tf-gc-' + escapeHtml(field.id) + '">' +
+          '<span>' + escapeHtml(field.label) + '</span>' +
+          '<span class="tf-gc__label-unit">обязательно</span>' +
+        '</label>' +
+        '<div class="tf-gc__input-wrap">' +
+          '<input class="tf-gc__input" id="tf-gc-' + escapeHtml(field.id) + '" name="' + escapeHtml(field.id) + '"' +
+            ' type="text" inputmode="decimal" autocomplete="off"' +
+            ' placeholder="' + escapeHtml(field.placeholder || "") + '"' +
+            ' value="' + escapeHtml(value) + '"' +
+            ' aria-describedby="tf-gc-error-' + escapeHtml(field.id) + '">' +
+          '<span class="tf-gc__unit">' + escapeHtml(field.unit || "") + '</span>' +
+        '</div>' +
+        hint +
+        '<p class="tf-gc__error" id="tf-gc-error-' + escapeHtml(field.id) + '" data-error-for="' + escapeHtml(field.id) + '" aria-live="polite"></p>' +
+      '</div>';
+    }
+
+    function renderStep() {
+      var steps = getActiveSteps();
+      if (state.stepIndex >= steps.length) state.stepIndex = steps.length - 1;
+      if (state.stepIndex < 0) state.stepIndex = 0;
+
+      var step = steps[state.stepIndex];
+      var progress = Math.round(((state.stepIndex + 1) / steps.length) * 100);
+      var fieldsHtml = step.fields.map(function (field) {
+        return field.type === "radio" ? renderRadioField(field) : renderNumberField(field);
+      }).join("");
+      var isLast = state.stepIndex === steps.length - 1;
+
+      app.innerHTML =
+        '<div class="tf-gc__screen tf-gc__panel">' +
+          '<div class="tf-gc__progress-wrap">' +
+            '<div class="tf-gc__progress-meta">' +
+              '<span>Шаг ' + (state.stepIndex + 1) + ' из ' + steps.length + '</span>' +
+              '<span>' + progress + '%</span>' +
+            '</div>' +
+            '<div class="tf-gc__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + progress + '">' +
+              '<div class="tf-gc__progress-value" style="width:' + progress + '%"></div>' +
+            '</div>' +
+          '</div>' +
+          '<form class="tf-gc__step" novalidate data-step-form>' +
+            '<div class="tf-gc__step-head">' +
+              '<p class="tf-gc__eyebrow">' + escapeHtml(CONFIG.texts.eyebrow) + '</p>' +
+              '<h2 class="tf-gc__step-title">' + escapeHtml(step.title) + '</h2>' +
+              '<p class="tf-gc__step-copy">' + escapeHtml(step.description || "") + '</p>' +
+            '</div>' +
+            '<div class="tf-gc__fields">' + fieldsHtml + '</div>' +
+            '<div class="tf-gc__nav">' +
+              (state.stepIndex > 0
+                ? '<button class="tf-gc__btn tf-gc__btn--ghost" type="button" data-action="back">← ' + escapeHtml(CONFIG.texts.backButton) + '</button>'
+                : '<span class="tf-gc__nav-spacer"></span>') +
+              '<button class="tf-gc__btn tf-gc__btn--accent" type="submit">' +
+                escapeHtml(isLast ? CONFIG.texts.calculateButton : CONFIG.texts.nextButton) +
+                '<span class="tf-gc__btn-icon" aria-hidden="true">→</span>' +
+              '</button>' +
+            '</div>' +
+          '</form>' +
+        '</div>';
+    }
+
+    function collectStep() {
+      var steps = getActiveSteps();
+      var step = steps[state.stepIndex];
+      if (!step) return;
+
+      step.fields.forEach(function (field) {
+        if (field.type === "radio") {
+          var checked = root.querySelector('input[name="' + field.id + '"]:checked');
+          state.answers[field.id] = checked ? checked.value : "";
+        } else {
+          var input = root.querySelector('[name="' + field.id + '"]');
+          state.answers[field.id] = input ? input.value.trim() : "";
+        }
+      });
+    }
+
+    function showFieldError(field, message) {
+      var error = root.querySelector('[data-error-for="' + field.id + '"]');
+      var input = root.querySelector('[name="' + field.id + '"]');
+      if (error) error.textContent = message;
+      if (input && field.type !== "radio") input.setAttribute("aria-invalid", "true");
+    }
+
+    function clearFieldError(fieldId) {
+      var error = root.querySelector('[data-error-for="' + fieldId + '"]');
+      var input = root.querySelector('[name="' + fieldId + '"]');
+      if (error) error.textContent = "";
+      if (input) input.removeAttribute("aria-invalid");
+    }
+
+    function validateStep() {
+      var steps = getActiveSteps();
+      var step = steps[state.stepIndex];
+      var firstInvalid = null;
+      var valid = true;
+
+      step.fields.forEach(function (field) {
+        clearFieldError(field.id);
+        var rawValue = state.answers[field.id];
+
+        if (field.required && (rawValue == null || rawValue === "")) {
+          showFieldError(field, field.type === "radio" ? CONFIG.texts.choiceError : CONFIG.texts.requiredError);
+          if (!firstInvalid) firstInvalid = root.querySelector('[name="' + field.id + '"]');
+          valid = false;
+          return;
+        }
+
+        if (field.type === "number") {
+          var value = parseNumber(rawValue);
+          if (!Number.isFinite(value)) {
+            showFieldError(field, CONFIG.texts.numberError);
+            if (!firstInvalid) firstInvalid = root.querySelector('[name="' + field.id + '"]');
+            valid = false;
+          } else if (value < field.min || value > field.max) {
+            showFieldError(field, "Допустимый диапазон: " + field.min + "–" + field.max + " " + (field.unit || "") + ".");
+            if (!firstInvalid) firstInvalid = root.querySelector('[name="' + field.id + '"]');
+            valid = false;
+          }
+        }
+      });
+
+      if (firstInvalid && typeof firstInvalid.focus === "function") firstInvalid.focus();
+      return valid;
+    }
+
+    /*
+      ВСЯ РАСЧЁТНАЯ ЛОГИКА СОБРАНА ЗДЕСЬ.
+
+      Источник: Google Sheet, лист «Максимальный мышечный потенциал».
+      Ввод из интерфейса переводится в единицы таблицы:
+      - рост: см -> метры (B2) и дюймы (O27 = B2 * 39.3701);
+      - окружности: см -> дюймы (формула листа «Конвертация»: см / 2.54);
+      - вес остаётся в кг (B3).
+
+      Формулы ниже повторяют конкретные ячейки таблицы. Новых коэффициентов
+      в расчёт не добавлено. Текстовые трактовки результата находятся в CONFIG
+      и не участвуют в математике.
+    */
+    function calculateResult(answers) {
+      var heightM = parseNumber(answers.height) / 100;
+      var weightKg = parseNumber(answers.weight);
+      var bodyFat = parseNumber(answers.bodyFat);
+      var targetBodyFat = parseNumber(answers.targetBodyFat);
+      var wristInches = parseNumber(answers.wrist) / 2.54;
+      var ankleInches = parseNumber(answers.ankle) / 2.54;
+
+      /* O27 = B2 * 39.3701 */
+      var heightInches = heightM * 39.3701;
+
+      /* S25 = B3 * (1 - B4 / 100) * B2^(-2) */
+      var baseFfmi = weightKg * (1 - bodyFat / 100) * Math.pow(heightM, -2);
+
+      /* E3 и F3: скорректированный FFMI для роста, женский вариант / 0.85. */
+      var ffmiMale = baseFfmi + 6.1 * (1.8 - heightM);
+      var ffmiFemale = baseFfmi / 0.85 + 6.1 * (1.8 - heightM);
+
+      /*
+        E5 = ((O27 * (B6/7.2546 + B7/5.9772) * (B5/450 + 1)) * 1.024) / 2.20462
+        F5 = E5 * 0.85
+      */
+      var maxLeanMaleKg = ((heightInches * (wristInches / 7.2546 + ankleInches / 5.9772) * (targetBodyFat / 450 + 1)) * 1.024) / 2.20462;
+      var maxLeanFemaleKg = maxLeanMaleKg * 0.85;
+      var selectedMaxLeanKg = answers.sex === "female" ? maxLeanFemaleKg : maxLeanMaleKg;
+
+      /* E4/F4 = (макс. сухая масса / (100 - желаемый % жира)) * 100 */
+      var maxBodyWeightKg = (selectedMaxLeanKg / (100 - targetBodyFat)) * 100;
+
+      /* E6/F6 = (вес * (100 - текущий % жира) / макс. сухая масса) / 100 */
+      var currentLeanKg = weightKg * (100 - bodyFat) / 100;
+      var achieved = currentLeanKg / selectedMaxLeanKg;
+
+      var result = {
+        ffmi: answers.sex === "female" ? ffmiFemale : ffmiMale,
+        maxBodyWeightKg: maxBodyWeightKg,
+        maxLeanKg: selectedMaxLeanKg,
+        currentLeanKg: currentLeanKg,
+        achieved: achieved,
+        parts: []
+      };
+
+      if (answers.sex === "male") {
+        /* D8:D13 — максимальные мужские обхваты в дюймах. */
+        var partModels = [
+          {
+            id: "chest",
+            label: "Грудь",
+            /* D8 = 1.625*B6 + 1.3682*B7 + 0.3562*O27 */
+            potentialInches: 1.625 * wristInches + 1.3682 * ankleInches + 0.3562 * heightInches
+          },
+          {
+            id: "biceps",
+            label: "Бицепс",
+            /* D9 = 1.1709*B6 + 0.135*O27 */
+            potentialInches: 1.1709 * wristInches + 0.135 * heightInches
+          },
+          {
+            id: "forearm",
+            label: "Предплечье",
+            /* D10 = 0.95*B6 + 0.1041*O27 */
+            potentialInches: 0.95 * wristInches + 0.1041 * heightInches
+          },
+          {
+            id: "neck",
+            label: "Шея",
+            /* D11 = 1.1875*B6 + 0.1301*O27 */
+            potentialInches: 1.1875 * wristInches + 0.1301 * heightInches
+          },
+          {
+            id: "thigh",
+            label: "Одно бедро",
+            /* D12 = 1.4737*B7 + 0.1918*O27 */
+            potentialInches: 1.4737 * ankleInches + 0.1918 * heightInches
+          },
+          {
+            id: "calf",
+            label: "Икроножная мышца",
+            /* D13 = 0.9812*B7 + 0.125*O27 */
+            potentialInches: 0.9812 * ankleInches + 0.125 * heightInches
+          }
+        ];
+
+        /* E8:E13 = фактический обхват / максимальный обхват. */
+        partModels.forEach(function (part) {
+          part.currentCm = parseNumber(answers[part.id]);
+          part.potentialCm = part.potentialInches * 2.54;
+          part.progress = (part.currentCm / 2.54) / part.potentialInches;
+        });
+
+        var averageProgress = partModels.reduce(function (sum, part) {
+          return sum + part.progress;
+        }, 0) / partModels.length;
+
+        /* F8:F13 = E(row) / AVERAGE(E8:E13). */
+        partModels.forEach(function (part) {
+          part.relative = part.progress / averageProgress;
+        });
+
+        result.parts = partModels;
+      }
+
+      return result;
+    }
+
+    function getFfmiBenchmark(ffmi) {
+      return CONFIG.result.ffmiBenchmarks.find(function (benchmark) {
+        return ffmi >= benchmark.min;
+      });
+    }
+
+    function getAchievedExplanation(achieved) {
+      return CONFIG.result.achievedExplanations.find(function (item) {
+        return achieved < item.max;
+      });
+    }
+
+    function renderFfmiComparison(ffmi) {
+      var benchmarks = CONFIG.result.ffmiBenchmarks.filter(function (benchmark) {
+        return Number.isFinite(benchmark.min);
+      });
+      var rows = [];
+      var inserted = false;
+
+      function currentRow() {
+        return '<div class="tf-gc__ffmi-row tf-gc__ffmi-row--current" role="row">' +
+          '<div class="tf-gc__ffmi-value" role="cell">' + formatNumber(ffmi, 0) + '</div>' +
+          '<div class="tf-gc__ffmi-description" role="cell">Твой результат</div>' +
+        '</div>';
+      }
+
+      benchmarks.forEach(function (benchmark) {
+        if (!inserted && ffmi >= benchmark.min) {
+          rows.push(currentRow());
+          inserted = true;
+        }
+
+        rows.push('<div class="tf-gc__ffmi-row" role="row">' +
+          '<div class="tf-gc__ffmi-value" role="cell">' + formatNumber(benchmark.min, Number.isInteger(benchmark.min) ? 0 : 1) + '</div>' +
+          '<div class="tf-gc__ffmi-description" role="cell">' + escapeHtml(benchmark.label) + '</div>' +
+        '</div>');
+      });
+
+      if (!inserted) rows.push(currentRow());
+
+      return '<div class="tf-gc__ffmi-table" role="table" aria-label="Сравнительная таблица FFMI">' +
+        '<div class="tf-gc__ffmi-head" role="row">' +
+          '<div role="columnheader">FFMI</div>' +
+          '<div role="columnheader">Среднестатистические данные</div>' +
+        '</div>' +
+        rows.join("") +
+      '</div>';
+    }
+
+    function renderParts(parts) {
+      if (!parts.length) {
+        return '<div class="tf-gc__notice">' +
+          '<h3 class="tf-gc__notice-title">Обхваты не рассчитываются для женской модели</h3>' +
+          '<p class="tf-gc__notice-copy">В исходной таблице формулы максимальных обхватов прямо помечены как данные только для мужчин. Поэтому интерфейс не показывает неподтверждённую женскую оценку.</p>' +
+        '</div>';
+      }
+
+      var rows = parts.map(function (part) {
+        var relativeDelta = (part.relative - 1) * 100;
+        var relativeText = (relativeDelta > 0 ? "+" : "") + formatNumber(relativeDelta, 0) + "% к среднему";
+        var relativeClass = Math.abs(relativeDelta) <= 3 ? "tf-gc__pill tf-gc__pill--accent" : "tf-gc__pill";
+
+        return '<div class="tf-gc__part">' +
+          '<div class="tf-gc__part-name">' + escapeHtml(part.label) + '</div>' +
+          '<div class="tf-gc__part-cell" data-label="Сейчас"><span class="tf-gc__part-number">' + formatNumber(part.currentCm, 0) + ' см</span></div>' +
+          '<div class="tf-gc__part-cell" data-label="Ориентир"><span class="tf-gc__part-number">' + formatNumber(part.potentialCm, 0) + ' см</span></div>' +
+          '<div class="tf-gc__part-cell" data-label="Достигнуто"><span class="tf-gc__part-number">' + formatPercent(part.progress, 0) + '</span></div>' +
+          '<div class="tf-gc__part-cell tf-gc__part-cell--relative" data-label="Относительное развитие"><span class="' + relativeClass + '">' + relativeText + '</span></div>' +
+        '</div>';
+      }).join("");
+
+      return '<div class="tf-gc__parts">' +
+        '<div class="tf-gc__parts-head" aria-hidden="true">' +
+          '<span>Часть тела</span><span>Сейчас</span><span>Ориентир</span><span>Достигнуто</span><span>Отн. развитие</span>' +
+        '</div>' + rows +
+      '</div>';
+    }
+
+    function renderResult() {
+      var result = calculateResult(state.answers);
+      var benchmark = getFfmiBenchmark(result.ffmi);
+      var achievedExplanation = getAchievedExplanation(result.achieved);
+      var scoreNote = state.answers.sex === "female"
+        ? "Женский показатель нормализован коэффициентом 0,85 — в точности как в таблице."
+        : "Значение рассчитано по мужской колонке исходной таблицы.";
+      var ctaHtml = CONFIG.links.ctaUrl
+        ? '<a class="tf-gc__btn tf-gc__btn--accent" href="' + escapeHtml(CONFIG.links.ctaUrl) + '" target="_blank" rel="noopener">' + escapeHtml(CONFIG.links.ctaLabel) + ' ↗</a>'
+        : "";
+
+      app.innerHTML =
+        '<div class="tf-gc__screen">' +
+          '<div class="tf-gc__result-head">' +
+            '<div>' +
+              '<p class="tf-gc__eyebrow">' + escapeHtml(CONFIG.texts.resultEyebrow) + '</p>' +
+              '<h2 class="tf-gc__result-title">' + escapeHtml(CONFIG.texts.resultTitle) + '</h2>' +
+            '</div>' +
+          '</div>' +
+          '<div class="tf-gc__result-hero">' +
+            '<div class="tf-gc__score">' +
+              '<span class="tf-gc__score-label">Скорректированный FFMI</span>' +
+              '<strong class="tf-gc__score-value">' + formatNumber(result.ffmi, 0) + '</strong>' +
+              '<span class="tf-gc__score-note">' + escapeHtml(scoreNote) + '</span>' +
+            '</div>' +
+            '<div class="tf-gc__benchmark">' +
+              '<div>' +
+                '<span class="tf-gc__benchmark-kicker">Ближайший нижний ориентир таблицы</span>' +
+                '<h3 class="tf-gc__benchmark-title">' + escapeHtml(benchmark.label) + '</h3>' +
+                '<p class="tf-gc__benchmark-copy">ИСМТ/FFMI показывает мускулистость с поправкой на рост и используется здесь только как сравнительный ориентир.</p>' +
+              '</div>' +
+              '<span class="tf-gc__pill tf-gc__pill--accent">Расчёт завершён</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="tf-gc__metrics">' +
+            '<article class="tf-gc__metric"><span class="tf-gc__metric-label">Макс. вес при ' + formatNumber(parseNumber(state.answers.targetBodyFat), 0) + '% жира</span><strong class="tf-gc__metric-value">' + formatNumber(result.maxBodyWeightKg, 0) + ' <span class="tf-gc__metric-unit">кг</span></strong></article>' +
+            '<article class="tf-gc__metric"><span class="tf-gc__metric-label">Макс. сухая масса</span><strong class="tf-gc__metric-value">' + formatNumber(result.maxLeanKg, 0) + ' <span class="tf-gc__metric-unit">кг</span></strong></article>' +
+            '<article class="tf-gc__metric"><span class="tf-gc__metric-label">Текущая сухая масса</span><strong class="tf-gc__metric-value">' + formatNumber(result.currentLeanKg, 0) + ' <span class="tf-gc__metric-unit">кг</span></strong></article>' +
+            '<article class="tf-gc__metric"><span class="tf-gc__metric-label">Достигнуто от ориентира</span><strong class="tf-gc__metric-value">' + formatPercent(result.achieved, 0) + '</strong></article>' +
+          '</div>' +
+          '<section class="tf-gc__section">' +
+            '<div class="tf-gc__section-head">' +
+              '<h3 class="tf-gc__section-title">Твоя позиция по FFMI</h3>' +
+              '<p class="tf-gc__section-copy">Синяя строка показывает твой результат относительно ориентиров из расчётной таблицы.</p>' +
+            '</div>' +
+            renderFfmiComparison(result.ffmi) +
+          '</section>' +
+          '<section class="tf-gc__section">' +
+            '<div class="tf-gc__section-head">' +
+              '<h3 class="tf-gc__section-title">Как читать результат</h3>' +
+              '<p class="tf-gc__section-copy">' + escapeHtml(achievedExplanation.text) + '</p>' +
+            '</div>' +
+            '<div class="tf-gc__notice">' +
+              '<h4 class="tf-gc__notice-title">Ориентир, а не жёсткий потолок</h4>' +
+              '<p class="tf-gc__notice-copy">Формула чувствительна к проценту жира, окружностям кисти и лодыжки. Если результат выглядит неожиданно, повтори замеры в одинаковых условиях.</p>' +
+            '</div>' +
+          '</section>' +
+          '<section class="tf-gc__section">' +
+            '<div class="tf-gc__section-head">' +
+              '<h3 class="tf-gc__section-title">Пропорции тела</h3>' +
+              '<p class="tf-gc__section-copy">Относительное развитие сравнивает каждую часть со средним процентом достижения по всем шести обхватам.</p>' +
+            '</div>' +
+            renderParts(result.parts) +
+          '</section>' +
+          '<div class="tf-gc__result-actions">' +
+            ctaHtml +
+            '<button class="tf-gc__btn tf-gc__btn--ghost" type="button" data-action="restart">' + escapeHtml(CONFIG.texts.restartButton) + '</button>' +
+          '</div>' +
+          '<p class="tf-gc__disclaimer">' + escapeHtml(CONFIG.texts.disclaimer) + '</p>' +
+        '</div>';
+    }
+
+    function scrollToCalculator() {
+      if (typeof root.scrollIntoView === "function") {
+        root.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    app.addEventListener("click", function (event) {
+      var actionElement = event.target.closest("[data-action]");
+      if (!actionElement || !root.contains(actionElement)) return;
+
+      var action = actionElement.getAttribute("data-action");
+
+      if (action === "start") {
+        state.screen = "steps";
+        state.stepIndex = 0;
+        renderStep();
+        scrollToCalculator();
+      }
+
+      if (action === "back") {
+        collectStep();
+        state.stepIndex = Math.max(0, state.stepIndex - 1);
+        renderStep();
+        scrollToCalculator();
+      }
+
+      if (action === "restart") {
+        state.screen = "start";
+        state.stepIndex = 0;
+        state.answers = {};
+        renderStart();
+        scrollToCalculator();
+      }
+    });
+
+    app.addEventListener("input", function (event) {
+      var target = event.target;
+      if (!target || !target.name) return;
+      clearFieldError(target.name);
+
+      if (target.type === "radio") {
+        state.answers[target.name] = target.value;
+      }
+    });
+
+    app.addEventListener("submit", function (event) {
+      if (!event.target.matches("[data-step-form]")) return;
+      event.preventDefault();
+      collectStep();
+      if (!validateStep()) return;
+
+      var steps = getActiveSteps();
+      if (state.stepIndex < steps.length - 1) {
+        state.stepIndex += 1;
+        renderStep();
+      } else {
+        state.screen = "result";
+        renderResult();
+      }
+      scrollToCalculator();
+    });
+
+    renderStart();
+  })();
+</script>
