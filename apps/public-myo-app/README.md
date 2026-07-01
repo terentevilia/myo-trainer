@@ -18,7 +18,20 @@ npm run typecheck
 npm run build
 ```
 
-Для Vercel выберите Root Directory: `apps/public-myo-app`.
+## Деплой на Vercel
+
+Создайте отдельный Vercel Project со следующими настройками:
+
+- Framework Preset: `Next.js`;
+- Root Directory: `apps/public-myo-app`;
+- Install Command: `npm install`;
+- Build Command: `npm run build`;
+- Output Directory: значение по умолчанию Next.js, override должен быть выключен;
+- Node.js: `22.x`.
+
+Приложению не нужны `vercel.json`, `output: "standalone"`, `output: "export"` или ручной `distDir`. Vercel сам собирает и публикует каталог `.next` относительно Root Directory. `outputFileTracingRoot` привязан к папке самого приложения, а не к переменному `process.cwd()`, чтобы Vercel не искал артефакты в корне монорепозитория.
+
+Сборка использует поддерживаемый флаг `--webpack`, чтобы корневой `package-lock.json` монорепозитория не влиял на автоматическое определение Turbopack root.
 
 ## Контент
 
