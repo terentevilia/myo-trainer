@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, ImageOff, Play, Repeat2 } from "lucide-react";
+import { ImageOff, Repeat2 } from "lucide-react";
 import { MyoSetLogger } from "@/components/myo-set-logger";
 import { RestTimer } from "@/components/rest-timer";
 import type { MyoExercise, MyoExerciseLog } from "@/lib/myo-types";
@@ -36,7 +36,16 @@ export function MyoExerciseCard({
         </div>
 
         <div className="mt-5 overflow-hidden rounded-[1.5rem] bg-ink">
-          {exercise.imageUrl ? (
+          {exercise.videoUrl ? (
+            <iframe
+              src={exercise.videoUrl}
+              title={`Видео упражнения: ${exercise.name}`}
+              className="aspect-video w-full border-0"
+              allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write"
+              allowFullScreen
+              loading="lazy"
+            />
+          ) : exercise.imageUrl ? (
             <img
               src={exercise.imageUrl}
               alt={exercise.name}
@@ -55,19 +64,6 @@ export function MyoExerciseCard({
             </div>
           )}
         </div>
-
-        {exercise.videoUrl ? (
-          <a
-            href={exercise.videoUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="focus-ring mt-3 flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-ink px-4 text-sm font-black text-white transition hover:bg-moss"
-          >
-            <Play aria-hidden="true" size={17} fill="currentColor" />
-            Смотреть видео упражнения
-            <ExternalLink aria-hidden="true" size={14} />
-          </a>
-        ) : null}
 
         <div className="mt-5">
           <p className="text-xs font-black uppercase tracking-[0.12em] text-black/35">

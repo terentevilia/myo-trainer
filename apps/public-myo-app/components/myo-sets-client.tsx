@@ -53,6 +53,18 @@ function StepikMark() {
   );
 }
 
+function TFitLogo({ className }: { className: string }) {
+  return (
+    <span className={`relative block overflow-hidden rounded-2xl bg-[#324994] ${className}`}>
+      <img
+        src="/brand/tfit.png"
+        alt="TFit"
+        className="absolute inset-0 size-full object-cover object-center"
+      />
+    </span>
+  );
+}
+
 export function MyoSetsClient({ trainingDay }: { trainingDay: MyoTrainingDay }) {
   const exercises = useMemo(
     () => [...trainingDay.exercises].sort((a, b) => a.order - b.order),
@@ -99,9 +111,15 @@ export function MyoSetsClient({ trainingDay }: { trainingDay: MyoTrainingDay }) 
         style={{ paddingTop: "var(--safe-top)" }}
       >
         <div className="mx-auto flex h-[5.75rem] max-w-2xl items-center gap-3 px-4">
-          <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-acid text-ink">
-            <Dumbbell aria-hidden="true" size={21} strokeWidth={2.5} />
-          </span>
+          <a
+            href="https://terentevfit.ru/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Перейти на сайт Terentev Fit"
+            className="focus-ring shrink-0 rounded-2xl"
+          >
+            <TFitLogo className="size-11" />
+          </a>
           <div className="min-w-0">
             <p className="text-[0.65rem] font-black uppercase tracking-[0.15em] text-acid">
               Тренажёр
@@ -115,11 +133,7 @@ export function MyoSetsClient({ trainingDay }: { trainingDay: MyoTrainingDay }) 
             aria-label="Перейти на сайт Terentev Fit"
             className="focus-ring ml-auto rounded-2xl"
           >
-            <img
-              src="/brand/tfit.png"
-              alt="TFit"
-              className="size-12 rounded-2xl object-cover shadow-lg transition hover:scale-105"
-            />
+            <TFitLogo className="size-12 shadow-lg transition hover:scale-105" />
           </a>
         </div>
       </header>
@@ -173,8 +187,9 @@ export function MyoSetsClient({ trainingDay }: { trainingDay: MyoTrainingDay }) 
                 src={trainingDay.demoVideoUrl}
                 title="Демонстрация выполнения мио-подходов"
                 className="size-full border-0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write"
                 allowFullScreen
+                loading="lazy"
               />
             </div>
           ) : (

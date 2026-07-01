@@ -1,0 +1,29 @@
+<!-- Вставьте код целиком в блок T123 и замените YOUR_PUBLIC_MYO_URL. -->
+<div id="tfit-myo-embed" style="width:100%;overflow:hidden;background:#f4f3ee">
+  <iframe
+    id="tfit-myo-frame"
+    src="YOUR_PUBLIC_MYO_URL"
+    title="Тренажёр мио-подходов"
+    scrolling="no"
+    loading="eager"
+    allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+    style="display:block;width:100%;height:1000px;border:0;margin:0;background:#f4f3ee"
+  ></iframe>
+</div>
+
+<script>
+(function () {
+  var frame = document.getElementById("tfit-myo-frame");
+  if (!frame) return;
+
+  window.addEventListener("message", function (event) {
+    if (event.source !== frame.contentWindow) return;
+    if (!event.data || event.data.type !== "tfit-myo-resize") return;
+
+    var contentHeight = Number(event.data.height);
+    if (!Number.isFinite(contentHeight) || contentHeight < 320) return;
+
+    frame.style.height = Math.ceil(contentHeight + 28) + "px";
+  });
+})();
+</script>

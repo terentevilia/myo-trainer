@@ -1,7 +1,7 @@
 {
   "title": "Мио-подходы: обучающая тренировка",
   "description": "Интерактивная тренировка для освоения мио-подходов.",
-  "demoVideoUrl": "",
+  "demoVideoUrl": "https://kinescope.io/embed/a96o1D7zTfoofygYbSJFWg?autoplay=1&muted=1&loop=1",
   "myoProtocol": {
     "activationSet": "12–20 повторений",
     "activationRir": "1–2 RIR",
@@ -29,7 +29,7 @@
       "name": "Жим от груди",
       "order": 1,
       "imageUrl": "",
-      "videoUrl": "",
+      "videoUrl": "https://kinescope.io/embed/tr1GzjxHXSrUcE8y9Jvo5g?autoplay=1&muted=1&loop=1",
       "targetMuscles": ["Грудные", "Трицепс", "Передняя дельта"],
       "alternatives": ["Жим гантелей лежа", "Жим штанги лежа", "Отжимания"]
     },
@@ -38,7 +38,7 @@
       "name": "Тяга верхнего блока обратным хватом",
       "order": 2,
       "imageUrl": "",
-      "videoUrl": "",
+      "videoUrl": "https://kinescope.io/embed/rx5ZhUoq6kaMZ5JYiD1XCS?autoplay=1&muted=1&loop=1",
       "targetMuscles": ["Широчайшие", "Бицепс", "Задняя дельта"],
       "alternatives": ["Подтягивания обратным хватом", "Тяга верхнего блока нейтральным хватом"]
     },
@@ -47,7 +47,7 @@
       "name": "Разведение рук с гантелями стоя",
       "order": 3,
       "imageUrl": "",
-      "videoUrl": "",
+      "videoUrl": "https://kinescope.io/embed/eHK8635EWHUPyJo8b11Wbd?autoplay=1&muted=1&loop=1",
       "targetMuscles": ["Средняя дельта", "Передняя дельта"],
       "alternatives": ["Отведение руки в кроссовере", "Разведение рук в тренажере"]
     },
@@ -56,7 +56,7 @@
       "name": "Жим ногами в тренажере",
       "order": 4,
       "imageUrl": "",
-      "videoUrl": "",
+      "videoUrl": "https://kinescope.io/embed/qnHrzmNmdwJYMANi181zvi?autoplay=1&muted=1&loop=1",
       "targetMuscles": ["Квадрицепс", "Ягодичные", "Бицепс бедра"],
       "alternatives": ["Приседания в тренажере Смита", "Гоблет-приседания"]
     },
@@ -65,7 +65,7 @@
       "name": "Гиперэкстензия",
       "order": 5,
       "imageUrl": "",
-      "videoUrl": "",
+      "videoUrl": "https://kinescope.io/embed/sLHLqfDnTNw7EXyn1T6DVu?autoplay=1&muted=1&loop=1",
       "targetMuscles": ["Разгибатели спины", "Ягодичные", "Бицепс бедра"],
       "alternatives": ["Гиперэкстензия в тренажере", "Разгибание корпуса на римском стуле"]
     }

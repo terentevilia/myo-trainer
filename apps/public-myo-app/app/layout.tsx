@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { EmbedHeightReporter } from "@/components/embed-height-reporter";
 import { ServiceWorkerRegistration } from "@/components/service-worker-registration";
 import "./globals.css";
 
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="ru">
       <body>
         <ServiceWorkerRegistration />
+        <EmbedHeightReporter />
         {children}
       </body>
     </html>
