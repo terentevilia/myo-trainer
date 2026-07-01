@@ -29,7 +29,7 @@ npm run build
 - Output Directory: значение по умолчанию Next.js, override должен быть выключен;
 - Node.js: `22.x`.
 
-Приложению не нужны `vercel.json`, `output: "standalone"`, `output: "export"` или ручной `distDir`. Vercel сам собирает и публикует каталог `.next` относительно Root Directory. `outputFileTracingRoot` привязан к папке самого приложения, а не к переменному `process.cwd()`, чтобы Vercel не искал артефакты в корне монорепозитория.
+Приложению не нужны `vercel.json`, `output: "standalone"`, `output: "export"` или ручной `distDir`. Vercel сам собирает и публикует каталог `.next` относительно Root Directory. `outputFileTracingRoot` привязан к корню репозитория через путь относительно `next.config.ts`. Благодаря этому Next записывает в build manifest `relativeAppDir: "apps/public-myo-app"`, и Vercel ищет `.next` внутри приложения, а не в `/vercel/path0`.
 
 Сборка использует поддерживаемый флаг `--webpack`, чтобы корневой `package-lock.json` монорепозитория не влиял на автоматическое определение Turbopack root.
 
