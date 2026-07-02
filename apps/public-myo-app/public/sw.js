@@ -1,7 +1,7 @@
-const CACHE_NAME = "public-myo-pwa-v1";
+const CACHE_NAME = "public-myo-pwa-v2";
 const APP_SHELL = [
   "/",
-  "/myo-sets",
+  "/myo-sets/",
   "/manifest.webmanifest",
   "/icons/icon-192.png",
   "/icons/icon-512.png",

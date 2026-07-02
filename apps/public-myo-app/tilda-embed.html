@@ -1,0 +1,58 @@
+<!-- Вставьте этот код целиком в HTML-блок T123 на опубликованной странице Tilda. -->
+<div id="myo-trainer-embed" style="width:100%;overflow:hidden;background:#f4f3ee">
+  <iframe
+    id="myo-trainer-frame"
+    src="https://myo.terentevfit.ru/"
+    title="Тренажёр мио-подходов"
+    width="100%"
+    height="1200"
+    scrolling="no"
+    loading="eager"
+    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write"
+    allowfullscreen
+    style="display:block;width:100%;min-height:900px;height:1200px;border:0;margin:0;background:#f4f3ee"
+  ></iframe>
+</div>
+
+<script>
+(function () {
+  var APP_ORIGIN = "https://myo.terentevfit.ru";
+  var frame = document.getElementById("myo-trainer-frame");
+  var receivedHeight = false;
+  if (!frame) return;
+
+  function requestHeight() {
+    if (!frame.contentWindow) return;
+    frame.contentWindow.postMessage({ type: "myo-iframe-measure" }, APP_ORIGIN);
+  }
+
+  window.addEventListener("message", function (event) {
+    if (event.origin !== APP_ORIGIN) return;
+    if (event.source !== frame.contentWindow) return;
+    if (!event.data || event.data.type !== "myo-iframe-height") return;
+
+    var height = Number(event.data.height);
+    if (!Number.isFinite(height) || height < 320 || height > 20000) return;
+
+    receivedHeight = true;
+    frame.style.height = Math.ceil(height + 16) + "px";
+    frame.setAttribute("height", String(Math.ceil(height + 16)));
+  });
+
+  frame.addEventListener("load", function () {
+    requestHeight();
+    window.setTimeout(requestHeight, 500);
+    window.setTimeout(requestHeight, 1500);
+  });
+
+  window.addEventListener("resize", requestHeight);
+  window.addEventListener("orientationchange", requestHeight);
+
+  window.setTimeout(function () {
+    if (!receivedHeight) {
+      frame.style.height = "7200px";
+      frame.setAttribute("height", "7200");
+    }
+  }, 3500);
+})();
+</script>

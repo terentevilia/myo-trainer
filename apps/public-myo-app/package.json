@@ -9,6 +9,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
+    "build:hosting": "node scripts/build-hosting.mjs",
+    "package:hosting": "node scripts/build-hosting.mjs --package-only",
     "start": "next start",
     "typecheck": "tsc --noEmit"
   },

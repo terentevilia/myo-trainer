@@ -1,5 +1,7 @@
 node_modules
 .next
+out
+hosting-package.zip
 *.tsbuildinfo
 *.log
 .DS_Store

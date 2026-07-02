@@ -1,8 +1,8 @@
-<!-- Вставьте код целиком в блок T123 вместо старого iframe высотой 9000px. -->
+<!-- Устаревшее расположение: актуальный код находится в ../tilda-embed.html. -->
 <div id="tfit-myo-embed" style="width:100%;overflow:hidden;background:#f4f3ee">
   <iframe
     id="tfit-myo-frame"
-    src="https://myo-trainer.vercel.app"
+    src="https://myo.terentevfit.ru/"
     title="Тренажёр мио-подходов"
     scrolling="no"
     loading="eager"
@@ -13,12 +13,14 @@
 
 <script>
 (function () {
+  var appOrigin = "https://myo.terentevfit.ru";
   var frame = document.getElementById("tfit-myo-frame");
   if (!frame) return;
 
   window.addEventListener("message", function (event) {
+    if (event.origin !== appOrigin) return;
     if (event.source !== frame.contentWindow) return;
-    if (!event.data || event.data.type !== "tfit-myo-resize") return;
+    if (!event.data || event.data.type !== "myo-iframe-height") return;
 
     var contentHeight = Number(event.data.height);
     if (!Number.isFinite(contentHeight) || contentHeight < 320) return;
@@ -27,7 +29,7 @@
   });
 
   frame.addEventListener("load", function () {
-    frame.contentWindow.postMessage({ type: "tfit-myo-measure" }, "*");
+    frame.contentWindow.postMessage({ type: "myo-iframe-measure" }, appOrigin);
   });
 })();
 </script>
