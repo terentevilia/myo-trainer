@@ -53,6 +53,16 @@ function StepikMark() {
   );
 }
 
+function TelegramMark() {
+  return (
+    <img
+      src="/brand/telegram.png"
+      alt="Telegram"
+      className="size-12 shrink-0 rounded-full object-cover"
+    />
+  );
+}
+
 function TFitLogo({ className }: { className: string }) {
   return (
     <span className={`relative block overflow-hidden rounded-2xl bg-[#324994] ${className}`}>
@@ -326,6 +336,18 @@ export function MyoSetsClient({ trainingDay }: { trainingDay: MyoTrainingDay }) 
         </p>
 
         <div className="mt-5 grid gap-3">
+          <a
+            href="https://t.me/+ji8_oA5DdCY3NDMy"
+            target="_blank"
+            rel="noreferrer"
+            className="focus-ring group flex min-h-24 items-center gap-4 rounded-[1.75rem] border border-black/5 bg-white p-5 font-black shadow-card transition hover:-translate-y-0.5 hover:shadow-xl"
+          >
+            <TelegramMark />
+            <span className="flex-1 text-center text-sm sm:text-base">
+              Подписывайся на ТЕРЕНТЬЕВ ФИТНЕС
+            </span>
+            <ExternalLink aria-hidden="true" className="shrink-0 text-black/25 transition group-hover:text-[#229ED9]" size={18} />
+          </a>
           <a
             href="https://stepik.org/a/278327"
             target="_blank"

@@ -1,8 +1,8 @@
-<!-- Вставьте код целиком в блок T123 и замените YOUR_PUBLIC_MYO_URL. -->
+<!-- Вставьте код целиком в блок T123 вместо старого iframe высотой 9000px. -->
 <div id="tfit-myo-embed" style="width:100%;overflow:hidden;background:#f4f3ee">
   <iframe
     id="tfit-myo-frame"
-    src="YOUR_PUBLIC_MYO_URL"
+    src="https://myo-trainer.vercel.app"
     title="Тренажёр мио-подходов"
     scrolling="no"
     loading="eager"
@@ -24,6 +24,10 @@
     if (!Number.isFinite(contentHeight) || contentHeight < 320) return;
 
     frame.style.height = Math.ceil(contentHeight) + "px";
+  });
+
+  frame.addEventListener("load", function () {
+    frame.contentWindow.postMessage({ type: "tfit-myo-measure" }, "*");
   });
 })();
 </script>

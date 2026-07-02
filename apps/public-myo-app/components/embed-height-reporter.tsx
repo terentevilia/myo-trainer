@@ -33,11 +33,16 @@ export function EmbedHeightReporter() {
     resizeObserver.observe(document.documentElement);
     resizeObserver.observe(document.body);
     window.addEventListener("load", reportHeight);
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data?.type === "tfit-myo-measure") reportHeight();
+    };
+    window.addEventListener("message", handleMessage);
     reportHeight();
 
     return () => {
       resizeObserver.disconnect();
       window.removeEventListener("load", reportHeight);
+      window.removeEventListener("message", handleMessage);
       window.cancelAnimationFrame(animationFrame);
     };
   }, []);
